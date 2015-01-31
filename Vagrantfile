@@ -23,6 +23,7 @@ Vagrant.configure(VAGRANT_API_LEVEL) do |config|
     docker.has_ssh   = true
   end
 
+=begin
   # https://raw.githubusercontent.com/phusion/passenger-docker/master/image/insecure_key
   config.ssh.username         = 'root'
   config.ssh.private_key_path = 'insecure_key'
@@ -35,6 +36,8 @@ Vagrant.configure(VAGRANT_API_LEVEL) do |config|
       ansible.extra_vars = { ansible_ssh_user: 'vagrant' }
     end
   end
+
+=end
 end
 
 # rebuild Dockerfile: vagrant reload
