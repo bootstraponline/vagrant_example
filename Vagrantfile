@@ -5,6 +5,14 @@ VAGRANT_API_LEVEL = '2' unless defined?(VAGRANT_API_LEVEL)
 # https://github.com/mitchellh/vagrant/blob/efd1d5e11bfc5a72c7a1d1eae294b4751d841544/website/www/source/blog/2014-04-28-feature-preview-vagrant-1-6-docker-dev-environments.html.markdown
 # https://docs.vagrantup.com/v2/docker/basics.html
 Vagrant.configure(VAGRANT_API_LEVEL) do |config|
+
+  # https://docs.vagrantup.com/v2/provisioning/ansible.html
+  # By default, Vagrant 1.7+ automatically inserts a different
+  # insecure keypair for each new VM created. The easiest way
+  # to use the same keypair for all the machines is to disable
+  # this feature and rely on the legacy insecure key.
+  config.ssh.insert_key = false
+
   config.vm.provider "docker" do |d|
     # use local Dockerfile
     d.build_dir = "."
